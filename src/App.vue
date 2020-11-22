@@ -1,0 +1,35 @@
+<template>
+  <v-app>
+    <div>
+      <v-app-bar color="blue">
+      <v-app-bar-title color="white">Odontologia</v-app-bar-title>
+      <v-spacer></v-spacer>
+      <v-btn text to="/">Home</v-btn> 
+      <v-btn text to="/login">Login</v-btn>  
+      <v-btn text to="/sobre">Sobre nós</v-btn>     
+      </v-app-bar>      
+    </div>        
+      <v-row>
+        <router-view/>
+      </v-row> 
+  </v-app>
+</template>
+
+<script>
+
+export default {
+  name: 'App',
+
+  components: {
+    
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Petit+Formal+Script&family=Poppins:wght@600&display=swap');
+</style>
