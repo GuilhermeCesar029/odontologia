@@ -23,6 +23,9 @@
           deformidades esqueléticas (cirurgia ortognática) e implantodontia.
         </p>
       </div>
+      <div>
+        <video-embed src="https://www.youtube.com/watch?v=KdXAETopa1s"></video-embed>
+      </div>
     </div> 
   </v-container> 
 </template>
@@ -30,7 +33,11 @@
 <script>
 
 export default {
-  
+  data () {
+    return {
+     
+    }
+  }
 }
 </script>
 

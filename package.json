@@ -10,8 +10,10 @@
   "dependencies": {
     "bootstrap-vue": "~2.19.0",
     "core-js": "~3.7.0",
+    "v-video-embed": "^1.0.8",
     "vue": "~2.6.12",
     "vue-router": "~3.4.9",
+    "vue-xgplayer": "^0.4.2",
     "vuetify": "~2.3.18"
   },
   "devDependencies": {
