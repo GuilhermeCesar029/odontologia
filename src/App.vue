@@ -5,7 +5,9 @@
       <v-app-bar-title color="white">Odontologia</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-btn text to="/">Home</v-btn> 
-      <v-btn text to="/sobre">Sobre</v-btn>   
+      <v-btn text to="/sobre">Sobre</v-btn>  
+      <v-btn text to="/agendar">Agendar</v-btn> 
+      <v-btn text to="/dashboard">cliente</v-btn> 
       <v-btn text to="/login">Login</v-btn>          
       </v-app-bar>      
     </div>        

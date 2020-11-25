@@ -32,7 +32,7 @@
                   <p class="agenda-subtitulo">Preencha o formulário e agende sua avaliação com um dentista na odontoVGM</p>
                 </div>
                 <div class="agenda-local">
-                  <span>Luziânia</span>
+                  <span>Luziânia - GO</span>
                 </div>
                 </div>
                 <div class="agenda-input">
