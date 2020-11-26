@@ -17,7 +17,9 @@
            <v-divider></v-divider>            
         </v-navigation-drawer>
       </v-col>
+      
       <v-col cols="10">  
+        <h2 id="procedimentos">Procedimentos</h2>
         <v-container>
           
             <v-layout row wrap>
@@ -26,15 +28,26 @@
                 v-for="item in items"
                 :key="item.nome" 
               >
-                <v-card elevation="24" outlined>
-                  <v-card-text>
-                    <div>{{item.nome}}</div>
-                    <div>{{item.sobrenome}}</div>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-btn><v-icon>mdi-delete</v-icon></v-btn>
-                  </v-card-actions>
-                </v-card> 
+                <div class="card">
+                  <v-card 
+                    elevation="24" 
+                    outlined                   
+                  >
+                    <v-card-text>
+                      <v-card-title>{{item.nome}}</v-card-title>
+                      <v-card-text>{{item.descricao}}</v-card-text>
+                      <v-card-text>{{item.data}}</v-card-text>
+                      <v-card-text>{{item.hora}}</v-card-text>
+                      <v-card-text>{{item.local}}</v-card-text>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+
+                      <v-btn icon><v-icon>mdi-delete</v-icon></v-btn>
+                      <v-btn icon><v-icon>mdi-pencil</v-icon></v-btn>
+                    </v-card-actions>
+                  </v-card> 
+                </div>
               </v-col>
             </v-layout>
           
@@ -48,9 +61,18 @@ export default {
   data () {
       return {
           items: [
-            { nome: 'Guilherme', sobrenome: 'cesar' },
-            { nome: 'teste2', sobrenome: 'teste2' },
-            { nome: 'teste3', sobrenome: 'teste3' },
+            { 
+              nome: 'Canal', descricao: 'descrição do procedimento', hora: '10:15', 
+              data : '06/01/2021', local: 'Luziania - G0'
+            },
+            { 
+              nome: 'teste2', descricao: 'descrição2', hora: '11:30', 
+              data : '23/12/2020', local: 'Luziania - G0'
+            },
+            { 
+              nome: 'teste3', descricao: 'descrição3', hora: '14:40', 
+              data : '23/01/2021', local: 'Luziania - G0'
+            },
             
           ],
       }
@@ -59,5 +81,13 @@ export default {
 </script>
 
 <style>
-
+  #procedimentos {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .card {
+    border-width: 1px;
+    border-color: rgb(137, 199, 244);
+  }
 </style>
