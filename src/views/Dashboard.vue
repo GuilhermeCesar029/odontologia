@@ -19,14 +19,14 @@
       </v-col>
       
       <v-col cols="10">  
-        <h2 id="procedimentos">Procedimentos</h2>
+        <h2 id="procedimentos">Próximas Consultas</h2>
         <v-container>
           
             <v-layout row wrap>
               <v-col 
                 cols="3"
-                v-for="item in items"
-                :key="item.nome" 
+                v-for="cliente of clientes" 
+                :key="cliente.id"
               >
                 <div class="card">
                   <v-card 
@@ -34,48 +34,182 @@
                     outlined                   
                   >
                     <v-card-text>
-                      <v-card-title>{{item.nome}}</v-card-title>
-                      <v-card-text>{{item.descricao}}</v-card-text>
-                      <v-card-text>{{item.data}}</v-card-text>
-                      <v-card-text>{{item.hora}}</v-card-text>
-                      <v-card-text>{{item.local}}</v-card-text>
+                      <v-card-title>Procedimento: {{cliente.procedimento}}</v-card-title>
+                      <v-card-text>Data: {{cliente.data}}</v-card-text>
+                      <v-card-text>Hora: {{cliente.hora}}</v-card-text>
+                      <v-card-text>Telefone: {{cliente.telefone}}</v-card-text>
                     </v-card-text>
                     <v-card-actions>
                       <v-spacer></v-spacer>
 
-                      <v-btn icon><v-icon>mdi-delete</v-icon></v-btn>
-                      <v-btn icon><v-icon>mdi-pencil</v-icon></v-btn>
+                      <v-dialog
+                        v-model="dialog"
+                        persistent
+                        max-width="600px"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-btn
+                           @click="editar(cliente)"                           
+                            v-bind="attrs"
+                            v-on="on"                            
+                            icon
+                            color="primary"
+                          >
+                          <v-icon>mdi-pencil</v-icon>
+                          </v-btn>
+                        </template>
+                        <v-card>
+                          <form @submit.prevent="salvar">
+                            <v-card-title>
+                              <span class="headline">Atualizar</span>
+                            </v-card-title>
+                            <v-card-text>
+                              <v-container>
+                                <v-row>                                
+                                    <v-col cols="12">
+                                      <v-text-field
+                                        v-model="cliente.nome"
+                                        label="Nome completo"
+                                        prepend-icon="mdi-account-circle"
+                                        required
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                      <v-text-field
+                                        v-model="cliente.telefone"
+                                        label="Telefone"
+                                        prepend-icon="mdi-phone"
+                                        required
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                      <v-text-field
+                                        v-model="cliente.email"
+                                        label="Digite seu melhor email"
+                                        prepend-icon="mdi-email"
+                                        required
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                      <v-text-field
+                                        v-model="cliente.data"
+                                        label="Data"
+                                        prepend-icon="mdi-calendar"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                      <v-text-field
+                                        v-model="cliente.procedimento"
+                                        label="Procedimento"
+                                        prepend-icon="mdi-pencil"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                      <v-text-field
+                                        v-model="cliente.hora"
+                                        label="horario"
+                                        prepend-icon="mdi-calendar-clock"
+                                      ></v-text-field>
+                                    </v-col>                                 
+                                </v-row>
+                              </v-container>
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn
+                                color="blue darken-1"
+                                text
+                                @click="dialog = false"
+                              >
+                                Fechar
+                              </v-btn>
+                              <button>Atualizar</button>
+                            </v-card-actions>
+                          </form>  
+                        </v-card>
+                      </v-dialog> 
+
+                      <v-btn 
+                        color="red"
+                        icon
+                        @click="remover(cliente)"
+                      >
+                        <v-icon>mdi-delete</v-icon>
+                      </v-btn>                      
                     </v-card-actions>
                   </v-card> 
                 </div>
               </v-col>
             </v-layout>
-          
+
+                  
         </v-container> 
       </v-col>  
     </v-row>
 </template>
 
 <script>
+
+import Cliente from '../services/clientes';
+
 export default {
+
+  mounted(){
+    this.listar()
+  },
+
   data () {
       return {
-          items: [
-            { 
-              nome: 'Canal', descricao: 'descrição do procedimento', hora: '10:15', 
-              data : '06/01/2021', local: 'Luziania - G0'
-            },
-            { 
-              nome: 'teste2', descricao: 'descrição2', hora: '11:30', 
-              data : '23/12/2020', local: 'Luziania - G0'
-            },
-            { 
-              nome: 'teste3', descricao: 'descrição3', hora: '14:40', 
-              data : '23/01/2021', local: 'Luziania - G0'
-            },
-            
-          ],
+        clientes: [],
+        cliente: {
+          id: '',
+          nome: '',
+          telefone: '',
+          email: '',
+          data: '',
+          procedimento: '',
+          hora: '', 
+        },
+        dialog: false,
       }
+  },
+
+  methods:{
+
+    listar(){
+      Cliente.listar().then(resposta => {
+        this.clientes = resposta.data
+      })
+    },
+
+    salvar(){
+      if(!this.cliente.id){ //se o id for nulo
+        Cliente.salvar(this.cliente).then(resposta => {
+          alert('Salvo com sucesso!')
+          this.cliente = resposta
+          this.listar() //para listar depois que salva
+        })  
+      }else{//se nao for nulo, atualizar
+        Cliente.atualizar(this.cliente).then(resposta => {
+          alert('Atualizado com sucesso!')
+          this.cliente = resposta
+          this.listar(); //para listar depois que atualiza
+        })  
+      }
+    },
+
+    editar(cliente){
+      this.cliente = cliente
+    },
+
+    remover(cliente){
+      if(confirm('Deseja excluir a consulta?')){
+        Cliente.apagar(cliente).then(resposta => {
+          this.cliente = resposta
+          this.listar();
+        })
+      }      
+    }
   }
 }
 </script>

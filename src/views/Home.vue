@@ -68,6 +68,8 @@ export default {
   } 
   #fundo {
     background-image: url(../assets/imagem-fundo-odonto-1.jpg);
+    height: 100vh;
+    width: 100vw;
   } 
   .text{
     text-align: center;

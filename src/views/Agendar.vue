@@ -25,7 +25,7 @@
         <v-row>
           <v-col >
             <div class="form">
-              <form action="">
+              <form @submit.prevent="salvar">
                 <div class="fundo-cima">
                 <div class="agenda-texto">
                   <h2 class="agenda-titulo">AGENDE SUA AVALIAÇÃO</h2>
@@ -37,26 +37,37 @@
                 </div>
                 <div class="agenda-input">
                   <v-text-field
-                    v-model="nome"
+                    v-model="cliente.nome"
                     label="Nome completo"
                     prepend-icon="mdi-account-circle"
                     required
                   ></v-text-field>
                   <v-text-field
-                    v-model="telefone"
+                    v-model="cliente.telefone"
                     label="Telefone"
                     prepend-icon="mdi-phone"
                     required
                   ></v-text-field>
                   <v-text-field
-                    v-model="email"
+                    v-model="cliente.email"
                     label="Digite seu melhor email"
                     prepend-icon="mdi-email"
+                    required
                   ></v-text-field>
                   <v-text-field
-                    v-model="data"
+                    v-model="cliente.data"
                     label="Data"
                     prepend-icon="mdi-calendar"
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="cliente.procedimento"
+                    label="Procedimento"
+                    prepend-icon="mdi-pencil"
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="cliente.hora"
+                    label="horario"
+                    prepend-icon="mdi-calendar-clock"
                   ></v-text-field>
                   <button class="agendar-btn">AGENDAR AVALIAÇÃO</button>
                 </div>
@@ -70,8 +81,39 @@
 </template>
 
 <script>
-export default {
 
+import Cliente from '../services/clientes';
+
+export default {
+  data(){
+    return {
+      cliente: {
+        id: '',
+        nome: '',
+        telefone: '',
+        email: '',
+        data: '',
+        procedimento: '',
+        hora: '', 
+      },
+    }
+  },
+
+  methods: {
+    listar(){
+      Cliente.listar().then(resposta => {
+        this.clientes = resposta.data
+      })
+    },
+
+    salvar(){
+      Cliente.salvar(this.cliente).then(resposta => {
+        alert('Consulta salva com sucesso!')
+        this.cliente = resposta
+        this.listar()
+      })
+    }
+  }
 }
 </script>
 
@@ -103,7 +145,7 @@ export default {
     line-height: 1.7;
   }
   .fundo-cima {
-    background-color: rgb(137, 199, 244);
+    background-color: #2196F3;
   }
   .agenda-texto {
     color: white;    
