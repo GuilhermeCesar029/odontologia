@@ -57,6 +57,7 @@
                   <v-text-field
                     v-model="cliente.data"
                     label="Data"
+                    type="date"
                     prepend-icon="mdi-calendar"
                   ></v-text-field>
                   <v-text-field
@@ -67,6 +68,8 @@
                   <v-text-field
                     v-model="cliente.hora"
                     label="horario"
+                    value="12:30:00"
+                    type="time"
                     prepend-icon="mdi-calendar-clock"
                   ></v-text-field>
                   <button class="agendar-btn">AGENDAR AVALIAÇÃO</button>

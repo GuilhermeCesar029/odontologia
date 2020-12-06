@@ -59,7 +59,7 @@
                           </v-btn>
                         </template>
                         <v-card>
-                          <form @submit.prevent="salvar">
+                          <form @submit.prevent="atualizar">
                             <v-card-title>
                               <span class="headline">Atualizar</span>
                             </v-card-title>
@@ -84,6 +84,7 @@
                                     </v-col>
                                     <v-col cols="12">
                                       <v-text-field
+                                        type="email"
                                         v-model="cliente.email"
                                         label="Digite seu melhor email"
                                         prepend-icon="mdi-email"
@@ -94,6 +95,7 @@
                                       <v-text-field
                                         v-model="cliente.data"
                                         label="Data"
+                                        type="date"
                                         prepend-icon="mdi-calendar"
                                       ></v-text-field>
                                     </v-col>
@@ -108,9 +110,11 @@
                                       <v-text-field
                                         v-model="cliente.hora"
                                         label="horario"
+                                        value="12:30:00"
+                                        type="time"
                                         prepend-icon="mdi-calendar-clock"
-                                      ></v-text-field>
-                                    </v-col>                                 
+                                      ></v-text-field>                                      
+                                    </v-col>                                                                     
                                 </v-row>
                               </v-container>
                             </v-card-text>
@@ -182,20 +186,12 @@ export default {
       })
     },
 
-    salvar(){
-      if(!this.cliente.id){ //se o id for nulo
-        Cliente.salvar(this.cliente).then(resposta => {
-          alert('Salvo com sucesso!')
-          this.cliente = resposta
-          this.listar() //para listar depois que salva
-        })  
-      }else{//se nao for nulo, atualizar
+    atualizar(){      
         Cliente.atualizar(this.cliente).then(resposta => {
           alert('Atualizado com sucesso!')
           this.cliente = resposta
           this.listar(); //para listar depois que atualiza
-        })  
-      }
+        })        
     },
 
     editar(cliente){
