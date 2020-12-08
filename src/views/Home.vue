@@ -25,12 +25,12 @@
                 </div>
                 
                 <div class="btn">
-                  <v-btn
-                    color="white"
+                  <v-btn  
+                    color="white"                  
                     depressed
-                    text to="/sobre"
+                    text to="/Agendar"
                   >
-                    Saiba Mais
+                    Agende sua consulta
                   </v-btn>
                 </div>
               </v-row>
@@ -47,9 +47,15 @@ export default {
   data () {
       return {
          items: [
-          { text: '5 anos fazendo um belo sorriso que pode mudar a vida das pessoas.',},
-          { text: 'Conheça nossos tratamentos, são mais de 10 tratamentos ',},
-          { text: 'https://fotos-site-odonto.s3.us-east-2.amazonaws.com/saiba-mais.jpg',},
+          { 
+            text: '5 anos fazendo um belo sorriso que pode mudar a vida das pessoas.', 
+          },
+          { 
+            text: 'Um belo sorriso pode mudar a vida das pessoas e por isso ajudamos você a conquistar um sorriso estético funcional e natural.',
+          },
+          { 
+            text: 'É uma alegria e uma satisfação enorme trabalhar com que se ama e seguir assim, construindo sorrisos!',
+          },
         ],
       }
     },
@@ -76,6 +82,7 @@ export default {
     color: white;
   }
   .btn {
-    background-color: blue;
+    background-color: #0790f9; 
+    /* background-color: blue; */
   }
 </style>
