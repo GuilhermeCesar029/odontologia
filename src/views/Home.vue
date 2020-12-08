@@ -73,7 +73,7 @@ export default {
     width: 52em;
   } 
   #fundo {
-    background-image: url(../assets/imagem-fundo-odonto-1.jpg);
+    background-image: url(../assets/imagem-fundo-home.png);
     height: 100vh;
     width: 100vw;
   } 
