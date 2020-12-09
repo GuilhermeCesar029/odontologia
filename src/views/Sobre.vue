@@ -9,18 +9,18 @@
       </div>
       <div id="texto">
         <p>
-          Seja bem vindo a OdontoVGM. Há 5 anos construindo lindos sorrisos!
-          Um belo sorriso pode mudar a vida das pessoas e por isso ajudamos você a conquistar um sorriso 
-          estético funcional e natural, sinônimo de saúde e bem-estar!
+          Seja bem vindo a OdontoVGM. Há 5 anos construindo lindos sorrisos! Um belo sorriso pode mudar a 
+          vida das pessoas e por isso ajudamos você a conquistar um sorriso estético funcional e natural, 
+          sinônimo de saúde e bem-estar!
         </p>
         <p>
-          Clínica Sorriso e Sorriso Odontologia – Empresas voltadas para a arte de fazer você sorrir, 
-          fundada em 2015, foram instaladas em Valparaíso de Goiás com objetivo de ser uma clínica 
-          voltada para a satisfação de seu usuário, tendo como foco principal você paciente.
+          ClínicaVGM – Empresas voltadas para a arte de fazer você sorrir, fundada em 2015, foram 
+          instaladas em Valparaíso de Goiás com objetivo de ser uma clínica voltada para a satisfação 
+          de seu usuário, tendo como foco principal você paciente.
         </p>
-        <p>
-          Instalações modernas, quadro clínico especializado, excelência em ortodontia, 
-          deformidades esqueléticas (cirurgia ortognática) e implantodontia.
+        <p>          
+          Instalações modernas, quadro clínico especializado, excelência em ortodontia, deformidades 
+          esqueléticas (cirurgia ortognática) e implantodontia.
         </p>
       </div>
       <div>
