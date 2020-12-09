@@ -1,6 +1,6 @@
 # odonto
 
-## Intalar 
+## Instalar 
 ```
 npm install
 ```
